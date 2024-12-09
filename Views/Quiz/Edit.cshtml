@@ -1,0 +1,37 @@
+﻿@model QuizWorkShopMVC.DTO.QuizVM
+
+@{
+    ViewData["Title"] = "Edit Quiz";
+}
+
+<h2>Edit Quiz</h2>
+
+<form asp-action="SaveEdit" method="post">
+    <input type="hidden" asp-for="QuizId" />
+    <div>
+        <label for="QuizName">Name</label>
+        <input asp-for="QuizName" class="form-control" />
+        <span asp-validation-for="QuizName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="QuizDescription">Description</label>
+        <textarea asp-for="QuizDescription" class="form-control"></textarea>
+        <span asp-validation-for="QuizDescription" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="Date">Date</label>
+        <input asp-for="Date" type="date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="ImageUrl">Image URL</label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="QuizList" class="btn btn-secondary">Cancel</a>
+</form>

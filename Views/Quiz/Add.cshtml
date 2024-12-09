@@ -1,0 +1,52 @@
+﻿@model QuizWorkShopMVC.DTO.QuizVM
+
+@{
+    ViewData["Title"] = "Add Quiz";
+}
+
+<h2>Add Quiz</h2>
+
+<form method="post" id="addForm" action="/Quiz/SaveAdd">
+    <div>
+        <label for="QuizName">Name</label>
+        <input asp-for="QuizName" class="form-control" />
+        <span asp-validation-for="QuizName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="QuizDescription">Description</label>
+        <textarea asp-for="QuizDescription" class="form-control"></textarea>
+        <span asp-validation-for="QuizDescription" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="Date">Date</label>
+        <input asp-for="Date" type="date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="ImageUrl">Image URL</label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="saveButton">Save</button>
+    <a asp-action="QuizList" class="btn btn-secondary">Cancel</a>
+</form>
+
+<script>
+    document.getElementById("saveButton").addEventListener("click", function (e) {
+        e.preventDefault(); 
+        console.log("Save button clicked");
+        // Get form data
+        const form = document.getElementById("addForm");
+        const formData = new FormData(form);
+        // Convert FormData to an object
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        console.log("Form Data:", data);
+    });
+</script>
